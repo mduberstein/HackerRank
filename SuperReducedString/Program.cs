@@ -72,7 +72,7 @@ class Solution
     }
 
     /// <summary>
-    /// second version
+    /// second version, change 1
     /// </summary>
     /// <param name="input"></param>
     /// <returns></returns>
