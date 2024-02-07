@@ -25,7 +25,7 @@ class Solution
         string outputString = super_reduced_string(inputString);
         Console.WriteLine($"Output string from {nameof(super_reduced_string)}: {outputString}");
 
-        outputString = super_reduced_string(inputString);
+        outputString = super_reduced_string1(inputString);
         Console.WriteLine($"Output string from {nameof(super_reduced_string1)}: {outputString}");
         Console.ReadKey();
     }
