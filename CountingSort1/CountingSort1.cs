@@ -61,7 +61,7 @@ class Solution
         }
         line = Console.ReadLine();
         line = Console.ReadLine();
-        int[] _ar = (line.Split()).Select(s => int.Parse(s)).ToArray();
+        int[] _ar = line.Split().Select(s => int.Parse(s)).ToArray();
         //int[] countAr = new int[_ar.Length];
         //for (int i = 0; i < _ar.Length; i++) {
         //    (countAr[_ar[i]])++;
