@@ -160,7 +160,12 @@ class Solution
         for (int _ar_i = 0; _ar_i < _ar_size; _ar_i++) {
             _ar[_ar_i] = Convert.ToInt32(split_elements[_ar_i]);
         }
+        Console.Write("Initial array: ");
+        print(_ar, 0, _ar.Length - 1);  
+
         //int[] _ar = {5, 8, 1, 3, 7, 9, 2 };
         quickSort(_ar);
+
+        Console.ReadLine();
     }
 }

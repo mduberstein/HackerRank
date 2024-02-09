@@ -22,11 +22,17 @@ class Solution
         //var inputString = "aa";
 
         //var inputString = Console.ReadLine();
-        string outputString = super_reduced_string(inputString);
-        Console.WriteLine($"Output string from {nameof(super_reduced_string)}: {outputString}");
 
-        outputString = super_reduced_string1(inputString);
-        Console.WriteLine($"Output string from {nameof(super_reduced_string1)}: {outputString}");
+        var inputs = new string[] { "aaabccddd", "baab", "aa" };
+        foreach (var input in inputs)
+        {
+            var outputString = super_reduced_string(input);
+            Console.WriteLine($"Output string from {nameof(super_reduced_string)}: {outputString}");
+
+            outputString = super_reduced_string1(input);
+            Console.WriteLine($"Output string from {nameof(super_reduced_string1)}: {outputString}");
+        }
+
         Console.ReadKey();
     }
 
@@ -96,12 +102,17 @@ class Solution
             }
         }
 
+        if( stack.Count == 0)
+        {
+            return "Empty String";
+        }
+
         char[] result = new char[stack.Count];
         for (int i = result.Length - 1; i >= 0; i--)
         {
             result[i] = stack.Pop();
         }
-
+       
         return new string(result);
     }
 }
