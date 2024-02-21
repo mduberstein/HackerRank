@@ -88,7 +88,7 @@ public class Solution
         //string[,] teamCuisinePreference = new string[,] { { "Tom", "French" }, { "Grace", "Jewish" }, {"Jane", "Mongolian"} };
         string[,] teamCuisinePreference = new string[,] { { "Tom", "*" }, { "Grace", "Italian" }, {"Jane", "German"} };
         //string[,] teamCuisinePreference = new string[0, 0];
-        string[,] menuCuisinePairs = new string[,] { { "Pasta", "Italian" }, { "Pizza", "Italian" }, { "Weiner", "German" } };
+        string[,] menuCuisinePairs = new string[,] { { "Pasta", "Italian" }, { "Pizza", "Italian" }, { "Weiner", "German" }, {"Potato", "German" } };
         //string[,] lunchMenuPairs = new string[0, 0];
         
         var nameLunchOptionPairs = matchLunches(menuCuisinePairs, teamCuisinePreference);
@@ -115,10 +115,9 @@ public class Solution
             HashSet<string> menus;
             var cuisineKey = teamCuisinePreference[teamI, 1];
             if (cuisineKey.Equals("*")) {
-                for (int mI = 0; mI < menuCuisinePairs.GetLength(0); mI++) {
+                for (int mI = 0; mI < menuCuisinePairs.GetLength(0); mI++, resI++) {
                     result[resI, 0] = teamCuisinePreference[teamI, 0];
                     result[resI, 1] = menuCuisinePairs[mI, 0];
-                    resI++;
                 }
             }
             else if (cuisineMenuLookup.TryGetValue(cuisineKey, out menus)) {
@@ -132,18 +131,18 @@ public class Solution
         return result;
     }
 
-    private static void CreateCuisineMenuLookup(string[,] lunchMenuPairs, out Dictionary<string, HashSet<string>> cuisineMenuLookup, out int totalMenus)
+    private static void CreateCuisineMenuLookup(string[,] menuCuisinePairs, out Dictionary<string, HashSet<string>> cuisineMenuLookup, out int totalMenus)
     {
         cuisineMenuLookup = new Dictionary<string, HashSet<string>>();
-        totalMenus = lunchMenuPairs.GetLength(0);
+        totalMenus = menuCuisinePairs.GetLength(0);
         for (int i = 0; i < totalMenus; i++) {
             HashSet<string> menus;
-            var cuisineKey = lunchMenuPairs[i, 1];
+            var cuisineKey = menuCuisinePairs[i, 1];
             if (!cuisineMenuLookup.TryGetValue(cuisineKey, out menus)) {
                 menus = new HashSet<string>();
                 cuisineMenuLookup.Add(cuisineKey, menus);
             }
-            menus.Add(lunchMenuPairs[i, 0]);
+            menus.Add(menuCuisinePairs[i, 0]);
         }
     }
 
@@ -152,11 +151,10 @@ public class Solution
         int size0 = 0; //number of output pairs
         for (int i = 0; i < teamCuisinePreference.GetLength(0); i++) {
             var cuizine = teamCuisinePreference[i, 1];
-            HashSet<string> menus;
             if (cuizine.Equals("*")) {
                 size0 += totalMenus;               
             }
-            else if(cuisineMenuLookup.TryGetValue(cuizine, out menus)) {
+            else if(cuisineMenuLookup.TryGetValue(cuizine, out HashSet<string> menus)) {
                 size0 += menus.Count;
             }
         }
