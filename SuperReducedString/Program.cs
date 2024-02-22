@@ -17,7 +17,7 @@ class Solution
         // https://www.hackerrank.com/challenges/reduced-string
         /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution */
         //var inputString = "aabcc";
-        var inputString = "aaabccddd";
+        //var inputString = "aaabccddd";
         //var inputString = "baab";
         //var inputString = "aa";
 

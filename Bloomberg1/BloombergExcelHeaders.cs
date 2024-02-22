@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace BloombergExcelHeaders
 {
+    // Write a function that given a positive integer,
+    // returns the corresponding column title as it would appear in an Excel spreadsheet.
     class Solution
     {
         static void Main(string[] args)
@@ -20,10 +22,12 @@ namespace BloombergExcelHeaders
                     int num = Convert.ToInt32(line);
                     if (num < 0)
                         break;
-                    //tested, works
+                    // ALT 1: tested, works, simplest
+                    var header = GetExcelColumnNameRevised(num);
+                    // ALT 1.1: also works, similar to above
+                    // string header = GetExcelColumnName(num);
+                    // ALT 2: tested, works
                     //string header = StackToString(NumberToHeader(num));
-                    //tested, works, simplest
-                    string header = GetExcelColumnName(num);
                     //string header = StackToString(NumberToOctal(num));
                     Console.WriteLine(header);
                 }
@@ -73,18 +77,19 @@ namespace BloombergExcelHeaders
             //1:26 A:Z, 27:52 AA:AZ,53:78 BA:BZ,.. 651:676 YA:YZ, 677:702 ZA:ZZ - one based
             //0:25 A:Z, 26:51 AA:AZ,52:77 BA:BZ,.. 650:675 YA:YZ
             char c;
-            int d;
+            int m;
             do {
-                d = (n - 1) % b;
-                c = (char)('A' + d);
+                m = (n - 1) % b;
+                c = (char)('A' + m);
                 st.Push(c);
-                n = (n - d) / b;
+                n = (n - m) / b;
             } while (n > 0);
 
             return st;
         }
 
         //tested works, simplest
+        // // algorithm from https://stackoverflow.com/questions/181596/how-to-convert-a-column-number-eg-127-into-an-excel-column-eg-aa
         private static string GetExcelColumnName(int columnNumber)
         {
             int dividend = columnNumber;
@@ -97,6 +102,28 @@ namespace BloombergExcelHeaders
                 dividend = (dividend - modulo) / 26;
             }
 
+            return columnName;
+        }
+
+        // calculate character by character from right to left
+        // intially dividend is the column number
+        // while dividend is greater than 0
+        // calculate the modulo and get the characterd
+        // by dividing by 26 and taking modulo and converting to character
+        // and then subtracting modulo and dividing by 26 to the devider for the next iteration
+        private static string GetExcelColumnNameRevised(int columnNumber)
+        {
+            if (columnNumber <= 0) {
+                throw new ArgumentException($"Invalid argument {columnNumber}! Must be positive integer");
+            }
+            var dividend = columnNumber - 1;
+            var columnName = string.Empty;
+            int modulo;
+            while (dividend >= 0) {
+                modulo = dividend % 26;
+                columnName = ((char)('A' + modulo)).ToString() + columnName;
+                dividend = (dividend - modulo)/ 26 - 1; 
+            }
             return columnName;
         }
     }
