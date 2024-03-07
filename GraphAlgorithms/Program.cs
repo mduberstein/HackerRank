@@ -24,7 +24,7 @@ class Solution
                     var graph = BuildGraph(reader, cost);
                     var algorithms = new GraphAlgorithms<int>(graph);
 
-                    algorithms.BFSCalculateDistance();
+                    algorithms.BFSCalculateDistanceFromStartAndShortestRoute();
                     algorithms.PrintShortestDistancesFromStartNode();
                     algorithms.PrintShortestRoutesFromStartNode();
 
@@ -124,7 +124,7 @@ class Solution
             dist[graph.Start.Value] = 0;
         }
 
-        public void BFSCalculateDistance()
+        public void BFSCalculateDistanceFromStartAndShortestRoute()
         {
             var queue = new Queue<Node<T>>();
             Graph.Start.State = State.Visiting;
