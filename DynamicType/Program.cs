@@ -8,9 +8,10 @@ namespace DynamicType
 {
     class Program
     {
+        // essence of this code is not clear
         static void Main(string[] args)
         {
-            System.IO.Directory.CreateDirectory(@"E:\TestFolder\TestSubFolder");
+            System.IO.Directory.CreateDirectory(@"Y:\TestFolder\TestSubFolder");
             Console.WriteLine(new ClassA().MethodA(0));
         }
 
@@ -36,7 +37,7 @@ namespace DynamicType
     enum DayOff { Sat = 1, Sun = 2 }
     public class ClassB
     {
-        public int count { get; set; } = 2;
+        public int Count { get; set; } = 2;
     }
 
 }
