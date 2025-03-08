@@ -81,6 +81,7 @@ public class Solution
                                             string[,] teamCuisinePreference)
     returning all possible pairs <TeamMemberName, LunchMenuOption> in a matrix 
     // RETURN AN EMPTY MATRIX IF PREFERRED LUNCH IS NOT FOUND
+    // NOTE: menu is used here in code  as a synonym for menuItem, totalMenues is the number of menu items
     */
 
     static void Main(string[] args)
@@ -106,9 +107,7 @@ public class Solution
     public static string[,] matchLunches(string[,] menuCuisinePairs,
                                             string[,] teamCuisinePreference)
     {
-        Dictionary<string, HashSet<string>> cuisineMenuLookup;
-        int totalMenus;
-        CreateCuisineMenuLookup(menuCuisinePairs, out cuisineMenuLookup, out totalMenus);
+        CreateCuisineMenuLookup(menuCuisinePairs, out Dictionary<string, HashSet<string>> cuisineMenuLookup, out int totalMenus);
         int size0 = CalculateResultSize(teamCuisinePreference, cuisineMenuLookup, totalMenus);
         string[,] result = new string[size0, 2];
         for (int teamI = 0, resI = 0; teamI < teamCuisinePreference.GetLength(0); teamI++) {
@@ -121,7 +120,8 @@ public class Solution
                 }
             }
             else if (cuisineMenuLookup.TryGetValue(cuisineKey, out menus)) {
-                foreach (var m in menus) {
+                foreach (var m in menus)
+                {
                     result[resI, 0] = teamCuisinePreference[teamI, 0];
                     result[resI, 1] = m;
                     resI++;
@@ -136,11 +136,10 @@ public class Solution
         cuisineMenuLookup = new Dictionary<string, HashSet<string>>();
         totalMenus = menuCuisinePairs.GetLength(0);
         for (int i = 0; i < totalMenus; i++) {
-            HashSet<string> menus;
             var cuisineKey = menuCuisinePairs[i, 1];
-            if (!cuisineMenuLookup.TryGetValue(cuisineKey, out menus)) {
+            if (!cuisineMenuLookup.TryGetValue(cuisineKey, out HashSet<string> menus)) {
                 menus = new HashSet<string>();
-                cuisineMenuLookup.Add(cuisineKey, menus);
+                cuisineMenuLookup[cuisineKey] = menus;
             }
             menus.Add(menuCuisinePairs[i, 0]);
         }
