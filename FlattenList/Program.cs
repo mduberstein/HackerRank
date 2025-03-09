@@ -1,6 +1,7 @@
 ﻿
 // This is the text editor interface. 
 // Anything you type or change here will be seen by the other person in real time.
+// Link the Down branch after the Next Node
 
 /*
     //Init
