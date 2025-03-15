@@ -32,6 +32,8 @@ class Solution
         found = PrintSequenceForTargetSum(targetSum);
         targetSum = 8;
         found = PrintSequenceForTargetSum(targetSum);
+        targetSum = 20;
+        found = PrintSequenceForTargetSum(targetSum);
 
         Console.ReadKey();
 
@@ -52,7 +54,7 @@ class Solution
 
     private static bool PrintSequenceForTargetSum(int targetSum)
     {
-        var combinations = Calculator.GetFirstCombinationEqualTargetSum(new List<int> { 8, 3, 5, 7 }, targetSum, out bool found);
+        var combinations = Calculator.GetFirstCombinationEqualTargetSum(new List<int> { 8, 3, 5, 7, 20 }, targetSum, out bool found);
         if (found)
         {
             combinations[combinations.Count - 1].ForEach(m => Console.Write($"{m} "));
@@ -102,6 +104,7 @@ static class Calculator
     {
         found = false;
         var combinations = new List<List<int>>();
+        // return empty
         if (source.Count == 0)
         {
             return combinations;
