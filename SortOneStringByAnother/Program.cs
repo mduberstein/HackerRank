@@ -1,41 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Diagnostics.SymbolStore;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-/*
-var st = "Good Friday Today";
-var stOd = "OrderMePizza"
 
-// not present is greater
-var lookup = new Dictionary<char, int>();
-var i = 0;
-foreach(var ch in stOd){
-    lookup[ch] = i++; 
-}
-st.ToCharArray().Sort((char a, char b)=>{
-    if (!lookup.ContainsKey(a))
-    {
-        if (!lookup.ContainsKey(b){
-            return 0;
-        }
-        else
-            return 1;
-    }
-    else
-    {
-        if (!lookup.ContainsKey(b)
-            return -1;
-        else if (lookup[a] == lookup[b])
-            return 0;
-        else if (l[a] < l[b])
-            return -1;
-        else
-            return 1;
-    }
-}).ToString();
-*/
 
 
 namespace SortOneStringByAnother
