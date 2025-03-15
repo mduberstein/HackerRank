@@ -13,7 +13,7 @@ class Solution
         string[] arr_temp = Console.ReadLine().Split(' ');
         //int[] arr = Array.ConvertAll(arr_temp, Int32.Parse);
         //var sum = arr.Sum();
-        var sum = arr_temp.Select(s => Int32.Parse(s)).Sum();
+        var sum = arr_temp.Select(s => int.TryParse(s, out int i) ? i : 0).Sum();
         Console.WriteLine(sum);
         Console.ReadKey();
     }

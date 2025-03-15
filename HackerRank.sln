@@ -47,7 +47,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicType", "DynamicType\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeamTournament", "TeamTournament\TeamTournament.csproj", "{1AC8D0AE-728A-4927-AD64-FD184CB7679B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SciexTest", "SciexTest\SciexTest.csproj", "{476CA69A-86A5-4BC5-8A6F-C725715B3686}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SciexTest1TargetSum", "SciexTest\SciexTest1TargetSum.csproj", "{476CA69A-86A5-4BC5-8A6F-C725715B3686}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asad", "Asad\Asad.csproj", "{1C5C05A3-06F0-4863-9E20-85D11B6D368F}"
 EndProject
@@ -68,6 +68,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test2024_1", "Test2024_1\Test2024_1.csproj", "{962A79A3-D15A-4589-B5E0-39C65846837A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsoleNET48_2024", "Console.NET4.8_2024\TestConsoleNET48_2024.csproj", "{FC86FE22-8D0B-46C0-B0C0-FBDC1E66868E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SciexTest2TwoThreadsPrintArray", "SciexTest2TwoThreadsPrintArray\SciexTest2TwoThreadsPrintArray.csproj", "{949186B0-5333-4769-A816-3345EB003132}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -169,6 +171,10 @@ Global
 		{FC86FE22-8D0B-46C0-B0C0-FBDC1E66868E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC86FE22-8D0B-46C0-B0C0-FBDC1E66868E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC86FE22-8D0B-46C0-B0C0-FBDC1E66868E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{949186B0-5333-4769-A816-3345EB003132}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{949186B0-5333-4769-A816-3345EB003132}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{949186B0-5333-4769-A816-3345EB003132}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{949186B0-5333-4769-A816-3345EB003132}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
