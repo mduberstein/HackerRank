@@ -10,26 +10,30 @@ namespace RemoveDuplicates
     {
         static void Main(string[] args)
         {
-            //string str = "abcd";
-            //Console.WriteLine($"{str} original");
-            //string reduced = RemoveDuplicates(str);
-            //Console.WriteLine($"{reduced} reduced");
-            //str = "aaaa";
-            //Console.WriteLine($"{str} original");
-            //reduced = RemoveDuplicates(str);
-            //Console.WriteLine($"{reduced} reduced");
-            //str = null;
-            //Console.WriteLine($"{str ?? "null"} original");
-            //reduced = RemoveDuplicates(str);
-            //Console.WriteLine($"{reduced ?? "null"} reduced");
-            //str = null;
-            //Console.WriteLine($"{str} original");
-            //reduced = RemoveDuplicates(str);
-            //Console.WriteLine($"{reduced} reduced");
-            //str = "abaccdb";
-            //Console.WriteLine($"{str ?? "null"} original");
-            //reduced = RemoveDuplicates(str);
-            //Console.WriteLine($"{reduced ?? "null"} reduced");
+            #region String Reduce
+            string str = "abcd";
+            Console.WriteLine($"{str} original");
+            string reduced = RemoveDuplicates(str);
+            Console.WriteLine($"{reduced} reduced");
+            str = "aaaa";
+            Console.WriteLine($"{str} original");
+            reduced = RemoveDuplicates(str);
+            Console.WriteLine($"{reduced} reduced");
+            str = null;
+            Console.WriteLine($"{str ?? "null"} original");
+            reduced = RemoveDuplicates(str);
+            Console.WriteLine($"{reduced ?? "null"} reduced");
+            str = null;
+            Console.WriteLine($"{str} original");
+            reduced = RemoveDuplicates(str);
+            Console.WriteLine($"{reduced} reduced");
+            str = "abaccdb";
+            Console.WriteLine($"{str ?? "null"} original");
+            reduced = RemoveDuplicates(str);
+            Console.WriteLine($"{reduced ?? "null"} reduced");
+            #endregion
+
+            #region Int Reduce
             List<int[]> inputs = new List<int[]> {new int[0], new int[]{ 5 },
                 new int[]{5, 5, 5}, new int[]{ 5, 2, 2, 5 }, new int []{3,4,5,6},
                 new int[]{4, 9, 9, 9, 4}, new int[]{9, 9, 8, 7, 6, 9, 9 } };
@@ -42,7 +46,7 @@ namespace RemoveDuplicates
                 Console.WriteLine($"OutputH: {string.Join(" ", outputH)}");
                 Console.WriteLine();
             }
-            
+            #endregion
             Console.ReadKey();
         }
 
