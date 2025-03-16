@@ -39,7 +39,7 @@ namespace TeamTournament
         {
             public Node Left;
             public Node Right;
-            //probability of Key - team name - reaching this Node 
+            //probability of Key, i.e. the team name, of reaching this Node in the Tournement structure 
             public Dictionary<string, float> Outcomes; //probabilies of wins over all teams it can play
         }
 
@@ -53,7 +53,15 @@ namespace TeamTournament
                 { new ProbabilityKey { Left = "B", Right = "D" }, 0.3F },
                 { new ProbabilityKey { Left = "C", Right = "D" }, 0.3F }
         };
-
+        /*
+         * A------------|
+         *              |---------------|
+         * B------------|               |
+         *                              |------root
+         * C------------|               |
+         *              |---------------|
+         * D------------|
+         */
         static Node InitStaticTree()
         {
             return new Node
@@ -77,6 +85,8 @@ namespace TeamTournament
             };
         }
 
+        // This method calculates returns the Dictionary where the Keys are TeamNames and
+        // the Value are the probabilites of the TeamName or reaching this Node in the tournament
         static Dictionary<string, float> CalculateProbabilitiesRecursive(Node n)
         {
             if(null != n.Outcomes)
@@ -100,6 +110,42 @@ namespace TeamTournament
             return n.Outcomes;
         }
 
+        // Partial explanation of the recursive steps
+        //static Dictionary<string, float> CalculateProbabilitiesRecursive(Node n)
+        //{
+        //    if (null != n.Outcomes)
+        //    {
+        //        return n.Outcomes;
+        //          // Step 2.1: root.Left.Left.Outcomes = {{"A", 1 }}
+        //          // Step 4.1: root.Left.Right.Outcomes = {{ "B", 1}}
+        //    }
+        //    n.Outcomes = new Dictionary<string, float>(); 
+        //      // Step 1: root.Outcomes = {empty}
+        //      // Step 2.1: root.Left.Outcomes = {empty}, root.Left.Left.Outcomes = {{"A", 1 }}
+        //    foreach (var keyValueLeft in CalculateProbabilitiesRecursive(n.Left))
+        //      // Call in Step 2 with root.Left, Return in Step 2.1
+        //      // Call in Step 3 with root.Left.Left, Return in Step 3.1
+        //    {
+        //        n.Outcomes.Add(keyValueLeft.Key, 0.0F);
+        //          // Step 3.2: root.Left.Outcomes: {{"A", 0.0F}}
+        //          
+        //        foreach (var keyValueRight in CalculateProbabilitiesRecursive(n.Right))
+        //          // Call in Step 4 with root.Left.Right, Return in Step 4.1 root.Left.Right.Outcomes = {{"B", 1}}
+        //   
+        //        {
+        //            n.Outcomes[keyValueLeft.Key] += keyValueLeft.Value * keyValueRight.Value * Victory(keyValueLeft.Key, keyValueRight.Key);
+        //              // Step 4.2: keyValueLeft.Key = "A", keyValueRight.Key = "B", root.Left.Right = {{"A", 0.3}}
+        //            if (!n.Outcomes.TryGetValue(keyValueRight.Key, out float prob))
+        //            {
+        //                n.Outcomes.Add(keyValueRight.Key, 0.0F);
+        //            }
+        //            n.Outcomes[keyValueRight.Key] += keyValueLeft.Value * keyValueRight.Value * Victory(keyValueRight.Key, keyValueLeft.Key);
+        //              // Step 4.3: keyValueLeft.Key = "A", keyValueRight.Key = "B", root.Left.Right = {{"B", 0.7}}
+        //        }
+        //    }
+        //    return n.Outcomes;
+        //}
+
         //probability of Victory of Left over Right
         static float Victory(string l, string r)
         {
@@ -121,6 +167,7 @@ namespace TeamTournament
         static void Main(string[] args)
         {
             Node root = InitStaticTree();
+            // Win Probability of a team is the probability of reaching the Root Node
             foreach(var pair in CalculateProbabilitiesRecursive(root).OrderBy(pair => pair.Key))
             {
                 Console.WriteLine($"Team {pair.Key}, Win Probability {pair.Value}");
@@ -168,6 +215,7 @@ namespace TeamTournament
 
 
 #region TypeTest
+// This is test in Typing timing
 
 //using System;
 //using System.IO;
@@ -245,7 +293,7 @@ namespace TeamTournament
 //            n.Out[kVL.Key] += kVL.Value * kVR.Value * Vic(kVL.Key, kVR.Key);
 //            float p;
 //            if (!n.Outs.TryGetValue(kVR.Key, out p){
-//                n.Outs.Add(kVR.Key, 0.0.F);
+//                n.Outs.Add(kVR.Key, 0.0F);
 //            }
 //            n.Outs[kVR.Key] += kVR.Value * kVL.Value * Vic(kVR.Key, kVL.Key);
 //        }
